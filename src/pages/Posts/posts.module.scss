@@ -1,0 +1,16 @@
+.container{
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+
+    .postContainer{
+        width: 70%;
+    }
+
+    .widgetWrapper{
+        width: 30%;
+        height: fit-content;
+    }
+}

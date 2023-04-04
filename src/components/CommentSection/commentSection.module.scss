@@ -1,0 +1,434 @@
+.container{
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 50px 70px;
+    box-sizing: border-box;
+    background-color: #fff;
+
+    .suggestion{
+        width: 100%;
+        height: 70px;
+        border: 2px solid rgb(194, 194, 194);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .writeComment{
+
+        .commentEditor{ 
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+
+            .avatarWrapper{
+                width: 50px;
+                height: 50px;
+                margin-right: 25px;
+                font-size: 24px;
+            }
+    
+            .text{
+                flex-basis: 0;
+                flex-grow: 1;
+                
+                min-height: 30px;
+                padding-top: 20px;
+                border-bottom: solid 1px black;
+                word-break: break-all;
+    
+                &:focus{
+                    outline: 0px solid #000;
+                    
+                }
+                &:empty:before {
+                    color: rgba(38, 37, 37, 0.84);
+                    content: "Viết bình luận...";
+                }
+            }
+        }
+
+        .action{
+
+            display: flex;
+            justify-content: flex-end;
+
+            .cancel{
+                width: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+    
+                span{
+                   
+                    border-radius: 5px;
+                    width: 80%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: rgb(15, 15, 15);
+                    font-weight: bold;
+                }
+            }
+
+            .submit{
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+    
+                span{
+                    background-color: #006dd4;
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: aliceblue;
+                    // font-weight: bold;
+                    border-radius: 30px;
+                    
+                }
+            }
+
+
+        }
+    }
+
+
+    .writeReplyComment{
+        margin-left: 60px;
+        margin-top: 20px;
+        .replyCommentEditor{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+
+            .avatarWrapper{
+                width: 40px;
+                height: 40px;
+                margin-right: 25px;
+            }
+    
+            .text{
+                flex-basis: 0;
+                flex-grow: 1;
+                
+                min-height: 30px;
+                padding-top: 10px;
+                border-bottom: solid 1px black;
+                word-break: break-all;
+    
+                &:focus{
+                    outline: 0px solid #000;
+                    
+                }
+                &:empty:before {
+                    color: rgba(38, 37, 37, 0.84);
+                    content: "Viết phản hồi...";
+                }
+            }
+        }
+
+        .action{
+
+            display: flex;
+            justify-content: flex-end;
+
+            .cancel{
+                width: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+    
+                span{
+                   
+                    border-radius: 5px;
+                    width: 80%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: rgb(15, 15, 15);
+                    font-weight: bold;
+                }
+            }
+
+            .submit{
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+    
+                span{
+                    background-color: #006dd4;
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: aliceblue;
+                    // font-weight: bold;
+                    border-radius: 30px;
+                    
+                }
+            }
+        }
+    }
+
+    .comments{
+        .commentContainer{
+
+            display: flex;
+            
+            .avatar{
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
+            .commentBody{
+                flex-grow: 1;
+                flex-basis: 0;
+
+                .commentDetail{
+    
+                    border-radius: 15px;
+                    // background-color: #c9c9c9;
+                    padding: 2px 15px 4px 15px;
+                    box-sizing: border-box;
+                    font-weight: normal;
+                    min-height: 30px;
+                    display: flex;
+                    // align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    width: fit-content;
+                    word-break: break-all;
+
+                    .user{
+                        margin-bottom: 5px;
+                        font-weight: bold;
+                        font-size: 16;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                
+                }
+    
+                .reply{
+                    padding-left: 15px;
+                    color: #757575;
+                    font-size: 13px;
+                    cursor: pointer;
+                    font-weight: 700;
+
+                    span{
+                        margin-right: 15px;
+                    }
+                }
+            }
+
+        }
+
+    
+        .showReply{
+            display: flex;
+            padding-left: 75px;
+            align-items: center;
+            color: #006dd4;
+            cursor: pointer;
+            font-size: 1vw;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .replies{
+            margin-left: 60px;
+
+            .replyContainer{
+                // background-color: #5b5b5b;
+                margin-bottom: 10px;
+                display: flex;
+                width: 100%;
+
+                .replyAvatar{
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 10px;
+                }
+
+                .replyBody{
+                    flex-grow: 1;
+                    flex-basis: 0;
+
+                    .replyDetail{
+                        
+                        max-width: 60vw;
+                        border-radius: 15px;
+                        padding: 2px 15px 4px 15px;
+
+                        .replyUser{
+                            margin-bottom: 5px;
+                            font-weight: bold;
+                        }
+
+                        .userReplied{
+                            font-weight: bold;
+                        }
+
+                        .repDetail{
+                         
+                            word-break: break-all;
+                        }
+                    }
+
+                    .replyTimePassed{
+                        font-size: 13px;
+                        color: #605E5E;
+                        font-weight: 700;
+                    }
+
+                    .replyButton{
+                        font-size: 13px;
+                        color: #605E5E;
+                        font-weight: 700;
+                        margin-left: 15px;
+                        margin-right: 15px;
+                        cursor: pointer;
+
+                        .writeReply{
+                            display: flex;
+                            width: 100%;
+
+                            .text{
+                                width: 100%;
+                                min-height: 40px;
+                                border-bottom: solid 1px black;
+                                word-break: break-all;
+                    
+                                &:focus{
+                                    outline: 0px solid #000;
+                                    // background-color: #db4242;
+                                }
+                            }
+                    
+                            .submit{
+                                width: 10%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                    
+                                span{
+                                    background-color: #006dd4;
+                                    border-radius: 5px;
+                                    width: 80%;
+                                    height: 40px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: aliceblue;
+                                }
+                            }
+                        }
+                    }
+                    .writeReplyReply{
+                       
+                        margin-top: 20px;
+                        .replyReplyEditor{
+                            display: flex;
+                            flex-direction: row;
+                            margin-bottom: 10px;
+                
+                            .avatarWrapper{
+                                width: 40px;
+                                height: 40px;
+                                margin-right: 25px;
+                            }
+                    
+                            .text{
+                                flex-basis: 0;
+                                flex-grow: 1;
+                                
+                                min-height: 30px;
+                                padding-top: 10px;
+                                border-bottom: solid 1px black;
+                                word-break: break-all;
+                    
+                                &:focus{
+                                    outline: 0px solid #000;
+                                    
+                                }
+                                &:empty:before {
+                                    color: rgba(38, 37, 37, 0.84);
+                                    content: "Viết phản hồi...";
+                                }
+                            }
+                        }
+                
+                        .action{
+                
+                            display: flex;
+                            justify-content: flex-end;
+                
+                            .cancel{
+                                width: 10%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                    
+                                span{
+                                   
+                                    border-radius: 5px;
+                                    width: 80%;
+                                    height: 30px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: rgb(15, 15, 15);
+                                    font-weight: bold;
+                                }
+                            }
+                
+                            .submit{
+                                width: 15%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                    
+                                span{
+                                    background-color: #006dd4;
+                                    border-radius: 5px;
+                                    width: 100%;
+                                    height: 30px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: aliceblue;
+                                    // font-weight: bold;
+                                    border-radius: 30px;
+                                    
+                                }
+                            }
+                        }                   
+                    }
+                }
+            }
+        }
+    }
+}

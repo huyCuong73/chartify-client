@@ -1,0 +1,191 @@
+.widget{
+    width: 100%;
+    margin-left: 5%;
+    box-sizing: border-box;
+    height: 100vh;
+    // background-color: rgb(249, 249, 249);
+
+    .status{
+        width: 100%;
+        height: fit-content;
+        background-color: #fff;
+        padding-bottom: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+
+
+        .text{
+           
+            width: 100%;
+            height: 3vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5px;
+            font-size: 1.3vw;
+            font-weight: 600;
+        }
+
+        .record{
+            height: 9vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            .practiceRecord{
+                position: relative;
+                width: 90%;
+                height: 30%;
+                background-color: #F5F5F5;  
+                border-radius: 20px;          
+
+                .userPractice{
+                    position: absolute;
+                    height: 100%;
+                    background-color: #3966AA;
+                    border-radius: 20px;
+                }
+
+                .recordTitle{
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: 500;
+                    font-size: 1.2vw;
+                    
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        line-height: 100%;
+                    }
+                }
+                .percentage{
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.2vw;
+                    box-sizing: border-box;
+                    padding-bottom: 1px;
+                    // line-height: 50%;
+                }
+            }
+            .courseRecord{
+                position: relative;
+                width: 90%;
+                height: 30%;
+                background-color: #F5F5F5;  
+                border-radius: 20px;   
+
+                .userPractice{
+                    position: absolute;
+                    width: 80%;
+                    height: 100%;
+                    background-color: #68A0F5;
+                    border-radius: 20px;
+                }
+
+                .recordTitle{
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: 500;
+                    font-size: 1.2vw;
+                    
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        line-height: 100%;
+                    }
+                }
+                .percentage{
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    line-height: 100%;
+                }
+            }
+
+        }
+    }
+
+    .fireAnt{
+        position: relative;
+
+        // .block{
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 13%;
+        //     background-color: #ffffff;
+        //     bottom: 0;
+        //     border-top: 1px solid #000;
+        // }
+    }
+
+    .contact{
+        margin-top: 20px;
+        width: 100%;
+        height: fit-content;
+        background-color: #fff;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+
+
+        .text{
+           
+            width: 100%;
+            height: 3vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5px;
+            font-size: 1.3vw;
+            font-weight: 600;
+        }
+
+        .contactInfo{
+            width: 90%;
+            height: fit-content;
+            background-color: #E8EBF6;
+            box-sizing: border-box;
+            padding: 17px 25px;
+            display: flex;      
+            justify-content: center;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            margin-bottom: 20px;
+            
+
+            span{
+                font-size: 15px;
+                text-align: center;
+                font-weight: 700;
+            }
+        }
+    }
+}
