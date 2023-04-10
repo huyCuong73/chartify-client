@@ -10,10 +10,11 @@ import { Link } from "react-router-dom";
 import Widget from "../../components/Widget/Widget";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesRequest } from "../../redux/actions/courses";
-
+import { updateLearningProgress } from "../../api/userAPI";
 
 const CourseList = () => {
 
+    const user = useSelector(state => state.user.user)
     const courses = useSelector(state => state.courses.courses)
     const [courseList, setCourseList] = useState(null)
     
@@ -24,8 +25,16 @@ const CourseList = () => {
     }, [courses])
 
 
-    const creteria = ["All", "sell", "buy", "already read", "unread"]
+    const creteria = ["Tất cả", "mua", "bán", "đã đọc", "chưa đọc", "đã lưu"]
     const [filter, setFilter] = useState(1)    
+                                                                    
+    const handleUpdateCoursesProgess = (courseId) => {
+        updateLearningProgress({
+            userId: user._id,
+            courseId
+        })
+    }
+
 
     if(!courses){
         return (
@@ -39,8 +48,8 @@ const CourseList = () => {
 
             <div className= {styles.courseContainer}>
                 <div className={styles.intro}>
-                    <h2>Course list</h2>
-                    <span>This is a list of chart courses on this site. Choose your favorite course and study how to read charts!</span>
+                    <span>Lý thuyết cơ bản</span>
+                    <p>Hãy .. .. . .. . </p>
                 </div>
 
                 <div className={styles.filter}>
@@ -49,15 +58,12 @@ const CourseList = () => {
                             
                             <div className={filter !== i+1 ? styles.creterion : styles.selected} onClick = {() => {
                                 setFilter(i+1)
-                                // setCourseList(courses.filter(course => course.category == cre))
-                                // setCourseList([...courses.filter(course => course.category === "buy")]);
-
-                                if(cre === "All")
+                                if(cre === "Tất cả")
                                     setCourseList(courses)
-                                if(cre === "sell")
-                                    setCourseList(courses.filter(course => course.category === "sell"))
-                                if(cre === "buy")
+                                if(cre === "mua")
                                     setCourseList(courses.filter(course => course.category === "buy"))
+                                if(cre === "sell")
+                                    setCourseList(courses.filter(course => course.category === "bán"))
                             }} >
                                 <span>{cre}</span>
                             </div>
@@ -86,13 +92,25 @@ const CourseList = () => {
                     {
                         courseList && courseList.map((course) => 
                         <Link to = {"/course/" + course._id}>
-                            <div className={styles.listItem}>
+                            <div className={styles.listItem} onClick = { () => {
+                                handleUpdateCoursesProgess(course._id)
+                            }}>
                                 <BookmarkAddIcon className={styles.markIcon}/>
                                 <img src = {course.thumnailImg}></img>
                                 <div className={styles.courseTitle}>
                                     <span>
                                         {course.title}
                                     </span>
+                                </div>
+                                <div className = {styles.courseDetail}>
+                                    <div className={styles.title}>
+                                        <span>
+                                            {course.title}
+                                        </span>
+                                    </div>
+                                    <div className = {styles.des}>
+                                        {course.des}
+                                    </div>
                                 </div>
                             </div>
                         </Link>

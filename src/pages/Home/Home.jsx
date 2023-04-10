@@ -13,12 +13,13 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <Navbar />
-            <img  src="/homept.png"></img>
+            <img className={styles.pcImage} src="/homept.png"></img>
+            <img className={styles.mobileImage} src="/homefinal.png"></img>
             <div className={styles.text}>
                 <span className={styles.span1}>Chào mừng đến với</span>
                 <span className={styles.span2}>CHARTIFY</span>
                 <span className={styles.span3}>Hãy luyện tập khả năng phân tích biểu đồ cùng chúng tôi</span>
-                <Link to ="/">
+                <Link to ="/practice">
                     <div className={styles.startButton}>
                         Luyện tập ngay
                     </div>

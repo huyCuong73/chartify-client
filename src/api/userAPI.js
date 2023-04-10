@@ -38,3 +38,6 @@ export const updateUserInfo = (payload) => {
 }
 
 export const getUser = (userCre) => axios.post(`${URL}/get-user`, userCre)
+
+export const getNewUsers = () => axios.get(`${URL}/get-new-user`)
+

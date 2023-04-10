@@ -10,10 +10,19 @@ import styles from './course.module.scss'
 // const template = { __html: a };
 
 const Course = () => {
+    const user = useSelector(state => state.user.user)
     const courses = useSelector(state => state.courses.courses)
     const param = useParams()
     const [course, setCourse] = useState(null)
     
+    useEffect(() => {
+        if(user){
+            const userLearningProgress = user.progress
+            console.log(userLearningProgress);
+        }
+    }, [param.id, user])
+
+
     useEffect(() => {
         if(courses){
             setCourse(courses.find((course) => course._id === param.id))

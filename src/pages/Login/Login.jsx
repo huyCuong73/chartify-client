@@ -36,7 +36,9 @@ export default function Login() {
 
             <div className={style.container}>
                 
-				<span className={style.logo}>LOGO</span>
+				<div className={style.logo}>
+					<img src="/final1.png" alt="" />
+				</div>
 				<div className={style.inputWrapper}>
 					<input
 						type="email"

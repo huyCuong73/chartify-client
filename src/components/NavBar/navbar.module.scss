@@ -1,3 +1,16 @@
+@mixin sm {
+    @media only screen and (max-width: 600px) {
+        @content;
+    }
+}
+.mobileNavBar {
+    display: none;
+}
+
+.mobileHomeNavBar {
+    display: none;
+}
+
 .homeNavBar {
     width: 100vw;
     position: fixed;
@@ -13,7 +26,12 @@
     font-size: 1.2vw;
     z-index: 999;
 
-    .notificationBox{
+    @include sm {
+        font-size: 25px;
+        display: none;
+    }
+
+    .notificationBox {
         position: fixed;
         background-color: white;
         top: 50px;
@@ -22,36 +40,35 @@
         border-radius: 15px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        .title{
+        .title {
             font-weight: bold;
             width: 100%;
             height: fit-content;
             font-size: 30px;
             box-sizing: border-box;
-            padding: 10px 20px;  
-            border-bottom: 0.1px solid #cfcfcf;          
+            padding: 10px 20px;
+            border-bottom: 0.1px solid #cfcfcf;
         }
 
-        .notificationContainer{
+        .notificationContainer {
             height: 540px;
             position: relative;
             overflow-y: scroll;
 
-            .loadingWrapper{
+            .loadingWrapper {
                 width: 100%;
                 height: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
 
-                .loading{
+                .loading {
                     width: 40px;
                     height: 40px;
-    
                 }
             }
 
-            .notifWrapper{
+            .notifWrapper {
                 width: 100%;
                 display: flex;
                 flex-direction: row;
@@ -60,33 +77,32 @@
                 padding: 10px;
                 box-sizing: border-box;
                 cursor: pointer;
-    
-    
-                .notifAvatar{
+
+                .notifAvatar {
                     width: 55px;
                     height: 55px;
                     // margin-right: 10px;
                     // margin-left: 10px;
                     font-size: 26px;
                 }
-    
-                .notifBody{
+
+                .notifBody {
                     width: 255px;
                     min-height: 55px;
                     display: flex;
-                    flex-direction: column ;
+                    flex-direction: column;
                     justify-content: space-between;
-    
-                    .unreadNotifContent{
+
+                    .unreadNotifContent {
                         position: relative;
                         font-size: 17px;
                         max-height: 45px;
 
-                        span{
+                        span {
                             font-weight: bold;
                         }
-                        
-                        .dot{
+
+                        .dot {
                             position: absolute;
                             width: 10px;
                             height: 10px;
@@ -98,22 +114,21 @@
                         }
                     }
 
-                    .unreadTimePassed{
+                    .unreadTimePassed {
                         margin-top: 5px;
                         font-size: 12px;
                         color: #002aff;
                     }
 
-                    .notifContent{
+                    .notifContent {
                         font-size: 17px;
                         max-height: 45px;
-                        span{
+                        span {
                             font-weight: bold;
                         }
                     }
-                    
 
-                    .timePassed{
+                    .timePassed {
                         margin-top: 5px;
                         font-size: 12px;
                     }
@@ -122,8 +137,8 @@
         }
     }
 
-    .logo{
-        width: 20%;
+    .logo {
+        width: 180px;
         height: 100%;
         // background-color: rgb(255, 0, 0);
         display: flex;
@@ -132,17 +147,21 @@
         padding-left: 30px;
         font-size: 25px;
         font-weight: 700;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
-    .nav{
+    .nav {
         width: 40%;
         height: 50px;
         padding: 0;
         // background-color: rgb(92, 1, 1);
         display: flex;
 
-
-        .navItem{
+        .navItem {
             cursor: pointer;
             width: 33%;
             display: flex;
@@ -151,54 +170,51 @@
             text-decoration: none;
             color: rgb(255, 255, 255);
 
-            span{
-                
+            span {
             }
         }
 
-        .linkActive{
-            pointer-events: none;  
+        .linkActive {
+            pointer-events: none;
             width: 33%;
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
             background-color: rgb(142, 142, 142);
-            color: rgb(1, 205, 188);   
-            font-weight: 600;      
-            font-size: 1.3vw;  
+            color: rgb(1, 205, 188);
+            font-weight: 600;
+            font-size: 1.3vw;
         }
     }
 
-    .auth{
+    .auth {
         width: 20%;
         display: flex;
 
-
-        .log{
+        .log {
             width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            
 
-            button{
+            button {
                 width: 80%;
                 height: 60%;
                 border: none;
                 color: white;
                 border-radius: 30px;
-                background-color: #2678F3;
+                background-color: #2678f3;
             }
 
-            .a{
+            .a {
                 width: 80%;
                 height: 60%;
                 border: none;
                 color: white;
                 border-radius: 30px;
-                background-color: #2678F3;
+                background-color: #2678f3;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -208,53 +224,52 @@
         }
     }
 
-    .profile{
+    .profile {
         width: 18%;
         display: flex;
         justify-content: flex-end;
 
-        .avatarContainer{
+        .avatarContainer {
             width: 40%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
 
-            .avatar{
+            .avatar {
                 width: 40px;
                 height: 40px;
                 font-size: 20px;
             }
-            
         }
-        .dropbox{
+        .dropbox {
             position: absolute;
-            top : 55px;                
+            top: 55px;
             width: 120px;
             height: fit-content;
             background-color: #ffffff;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
 
-            .item1{
+            .item1 {
                 padding-right: 10%;
                 height: 50px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-around ;
+                justify-content: space-around;
                 font-size: 16px;
                 // border-bottom: 2px solid #000;
                 cursor: pointer;
             }
 
-            .item2{
+            .item2 {
                 padding-right: 10%;
                 height: 50px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-around ;
+                justify-content: space-around;
                 font-size: 16px;
                 background-color: #e3e3e3;
                 // border-bottom: 2px solid #000;
@@ -262,7 +277,7 @@
                 border-radius: 0 0 10px 10px;
             }
         }
-        .notification{
+        .notification {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -271,10 +286,10 @@
             color: #ffffff;
             position: relative;
 
-            .iconWrapper{
+            .iconWrapper {
                 position: relative;
 
-                .newNotifCount{
+                .newNotifCount {
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -287,7 +302,7 @@
                     width: 15px;
                     height: 15px;
 
-                    .notifCountWrapper{
+                    .notifCountWrapper {
                         position: relative;
                         width: 100%;
                         height: 100%;
@@ -295,40 +310,19 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                
                     }
-
-                    
                 }
-                
             }
-            .notifOverlay{
+            .notifOverlay {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-              
             }
         }
-
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -349,7 +343,12 @@
     font-size: 1.2vw;
     z-index: 999;
 
-    .notificationBox{
+    @include sm {
+        font-size: 25px;
+        display: none;
+    }
+
+    .notificationBox {
         position: fixed;
         background-color: white;
         top: 50px;
@@ -358,36 +357,42 @@
         border-radius: 15px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        .title{
+        @include sm{
+            top: 40px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+        }
+
+        .title {
             font-weight: bold;
             width: 100%;
             height: fit-content;
             font-size: 30px;
             box-sizing: border-box;
-            padding: 10px 20px;  
-            border-bottom: 0.1px solid #cfcfcf;          
+            padding: 10px 20px;
+            border-bottom: 0.1px solid #cfcfcf;
         }
 
-        .notificationContainer{
+        .notificationContainer {
             height: 540px;
             position: relative;
             overflow-y: scroll;
 
-            .loadingWrapper{
+            .loadingWrapper {
                 width: 100%;
                 height: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
 
-                .loading{
+                .loading {
                     width: 40px;
                     height: 40px;
-    
                 }
             }
 
-            .notifWrapper{
+            .notifWrapper {
                 width: 100%;
                 display: flex;
                 flex-direction: row;
@@ -396,33 +401,32 @@
                 padding: 10px;
                 box-sizing: border-box;
                 cursor: pointer;
-    
-    
-                .notifAvatar{
+
+                .notifAvatar {
                     width: 55px;
                     height: 55px;
                     // margin-right: 10px;
                     // margin-left: 10px;
                     font-size: 26px;
                 }
-    
-                .notifBody{
+
+                .notifBody {
                     width: 255px;
                     min-height: 55px;
                     display: flex;
-                    flex-direction: column ;
+                    flex-direction: column;
                     justify-content: space-between;
-    
-                    .unreadNotifContent{
+
+                    .unreadNotifContent {
                         position: relative;
                         font-size: 17px;
                         max-height: 45px;
 
-                        span{
+                        span {
                             font-weight: bold;
                         }
-                        
-                        .dot{
+
+                        .dot {
                             position: absolute;
                             width: 10px;
                             height: 10px;
@@ -434,33 +438,31 @@
                         }
                     }
 
-                    .unreadTimePassed{
+                    .unreadTimePassed {
                         margin-top: 5px;
                         font-size: 12px;
                         color: #002aff;
                     }
 
-                    .notifContent{
+                    .notifContent {
                         font-size: 17px;
                         max-height: 45px;
-                        span{
+                        span {
                             font-weight: bold;
                         }
                     }
-                    
 
-                    .timePassed{
+                    .timePassed {
                         margin-top: 5px;
                         font-size: 12px;
                     }
                 }
             }
         }
-
     }
 
-    .logo{
-        width: 20%;
+    .logo {
+        width: 170px;
         height: 100%;
         // background-color: rgb(255, 0, 0);
         display: flex;
@@ -469,17 +471,21 @@
         padding-left: 30px;
         font-size: 25px;
         font-weight: 700;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
-    .nav{
+    .nav {
         width: 40%;
         height: 50px;
         padding: 0;
         // background-color: rgb(92, 1, 1);
         display: flex;
 
-
-        .navItem{
+        .navItem {
             cursor: pointer;
             width: 33%;
             display: flex;
@@ -488,54 +494,51 @@
             text-decoration: none;
             color: black;
 
-            span{
-                
+            span {
             }
         }
 
-        .linkActive{
-            pointer-events: none;  
+        .linkActive {
+            pointer-events: none;
             width: 33%;
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
             background-color: rgb(142, 142, 142);
-            color: rgb(1, 205, 188);   
-            font-weight: 600;      
-            font-size: 1.3vw;  
+            color: rgb(1, 205, 188);
+            font-weight: 600;
+            font-size: 1.3vw;
         }
     }
 
-    .auth{
+    .auth {
         width: 20%;
         display: flex;
 
-
-        .log{
+        .log {
             width: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            
 
-            button{
+            button {
                 width: 80%;
                 height: 60%;
                 border: none;
                 color: white;
                 border-radius: 30px;
-                background-color: #2678F3;
+                background-color: #2678f3;
             }
 
-            .a{
+            .a {
                 width: 80%;
                 height: 60%;
                 border: none;
                 color: white;
                 border-radius: 30px;
-                background-color: #2678F3;
+                background-color: #2678f3;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -545,53 +548,52 @@
         }
     }
 
-    .profile{
+    .profile {
         width: 18%;
         display: flex;
         justify-content: flex-end;
 
-        .avatarContainer{
+        .avatarContainer {
             width: 40%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
 
-            .avatar{
+            .avatar {
                 width: 40px;
                 height: 40px;
                 font-size: 20px;
             }
-            
         }
-        .dropbox{
+        .dropbox {
             position: absolute;
-            top : 55px;                
+            top: 55px;
             width: 120px;
             height: fit-content;
             background-color: #ffffff;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
 
-            .item1{
+            .item1 {
                 padding-right: 10%;
                 height: 50px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-around ;
+                justify-content: space-around;
                 font-size: 16px;
                 // border-bottom: 2px solid #000;
                 cursor: pointer;
             }
 
-            .item2{
+            .item2 {
                 padding-right: 10%;
                 height: 50px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-around ;
+                justify-content: space-around;
                 font-size: 16px;
                 background-color: #e3e3e3;
                 // border-bottom: 2px solid #000;
@@ -599,18 +601,18 @@
                 border-radius: 0 0 10px 10px;
             }
         }
-        .notification{
+        .notification {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-left: 5vw;
             cursor: pointer;
-            position: relative;                         
+            position: relative;
 
-            .iconWrapper{
+            .iconWrapper {
                 position: relative;
 
-                .newNotifCount{
+                .newNotifCount {
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -623,7 +625,7 @@
                     width: 15px;
                     height: 15px;
 
-                    .notifCountWrapper{
+                    .notifCountWrapper {
                         position: relative;
                         width: 100%;
                         height: 100%;
@@ -631,25 +633,425 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                
                     }
-
-                    
                 }
             }
 
-            .notifOverlay{
+            .notifOverlay {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-              
             }
-
         }
-
     }
-
 }
 
+
+
+@mixin inner-mobile-nav {
+
+    .mobileNav{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80vw;
+        height: 100vh;
+        background-color: rgba(27, 26, 26, 0.99);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        // padding: 20px;
+        padding-top: 30px;
+        align-items: center;
+
+        .navAvatar{
+            width: 80px;
+            height: 80px;
+        }
+
+        .userName{
+            font-size: 20px;
+            width: 100%;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav{
+            display: flex;
+            flex-direction: column;
+            color: white;
+            width: 100%;
+            // height: 500px;
+
+            .linkActive{
+                box-sizing: border-box;
+                padding-left: 20px;
+                color: white;
+                text-decoration: none;
+                height: 100px;
+                font-size: 26px;
+                background-color: #5a5a5a;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+
+                
+                .navTitle{
+                    margin-left: 15px;
+                }
+            }
+            .navItem{
+                box-sizing: border-box;
+                padding-left: 20px;
+                color: white;
+                text-decoration: none;
+                height: 80px;
+                font-size: 20px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+
+                .navTitle{
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+    .menu {
+        width: 25%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+
+        .homeMenuIcon {
+            width: 40px;
+            height: 100%;
+            color: white;
+        }
+
+        .menuIcon {
+            width: 40px;
+            height: 100%;
+            color: rgb(78, 78, 78);
+        }
+    }
+
+    .mobileLogo {
+        height: 40px;
+        width: 100px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    button {
+        height: 25px;
+        width: 25%;
+        margin-right: 10px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        background-color: #4542f7;
+        border: none;
+        cursor: pointer;
+    }
+
+    .profile{
+        width: 25%;
+        display: flex;
+        justify-content: flex-end;
+
+        .avatarContainer {
+            flex-grow: 1;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+            }
+        }
+        .dropbox {
+            position: absolute;
+            top: 40px;
+            width: 120px;
+            height: fit-content;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+
+            .item1 {
+                padding-right: 10%;
+                height: 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                font-size: 16px;
+                // border-bottom: 2px solid #000;
+                cursor: pointer;
+            }
+
+            .item2 {
+                padding-right: 10%;
+                height: 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                font-size: 16px;
+                background-color: #e3e3e3;
+                // border-bottom: 2px solid #000;
+                cursor: pointer;
+                border-radius: 0 0 10px 10px;
+            }
+        }
+    }
+
+    .mobileNotificationBox {
+        position: fixed;
+        background-color: white;
+        top: 40px;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 15px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        .title {
+            font-weight: bold;
+            width: 100%;
+            height: fit-content;
+            font-size: 30px;
+            box-sizing: border-box;
+            padding: 10px 20px;
+            border-bottom: 0.1px solid #cfcfcf;
+        }
+
+        .notificationContainer {
+            height: 78vh;
+            position: relative;
+            overflow-y: scroll;
+
+            .loadingWrapper {
+                width: 100%;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .loading {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            .notifWrapper {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 10px 0;
+                padding: 10px;
+                box-sizing: border-box;
+                cursor: pointer;
+
+                .notifAvatar {
+                    width: 55px;
+                    height: 55px;
+                    // margin-right: 10px;
+                    // margin-left: 10px;
+                    font-size: 26px;
+                }
+
+                .notifBody {
+                    flex: 1;
+                    box-sizing: border-box;
+                    padding-left: 15px;
+                    padding-right: 6px;
+                    min-height: 55px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .unreadNotifContent {
+                        position: relative;
+                        font-size: 17px;
+                        max-height: 45px;
+
+                        span {
+                            font-weight: bold;
+                        }
+
+                        .dot {
+                            position: absolute;
+                            width: 10px;
+                            height: 10px;
+                            background-color: #002aff;
+                            border-radius: 50%;
+                            right: -10px;
+                            top: 50%;
+                            transform: translate(0, 50%);
+                        }
+                    }
+
+                    .unreadTimePassed {
+                        margin-top: 5px;
+                        font-size: 12px;
+                        color: #002aff;
+                    }
+
+                    .notifContent {
+                        font-size: 17px;
+                        max-height: 45px;
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .timePassed {
+                        margin-top: 5px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    .mobileHomeNavBar {
+        width: 100%;
+        display: block;
+        height: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 99;
+
+        @include inner-mobile-nav();
+
+        .notification {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            cursor: pointer;
+            position: relative;
+
+
+            .iconWrapper {
+                position: relative;
+                color: #ffffff;
+
+                .newNotifCount {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: white;
+                    background-color: #ff0101;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 15px;
+                    height: 15px;
+
+                    .notifCountWrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 9px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+
+            .notifOverlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .mobileNavBar {
+        width: 100%;
+        display: block;
+        height: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #c6c6c6;
+        z-index: 99;
+
+        @include inner-mobile-nav();
+
+        .notification {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            cursor: pointer;
+            position: relative;
+
+
+            .iconWrapper {
+                position: relative;
+
+                .newNotifCount {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: white;
+                    background-color: #ff0101;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 15px;
+                    height: 15px;
+
+                    .notifCountWrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 9px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+
+            .notifOverlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

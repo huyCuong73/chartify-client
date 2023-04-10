@@ -5,6 +5,8 @@ import { getAllExercises } from '../../api/exerciseAPI';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import Navbar from '../../components/NavBar/NavBar';
 import Widget from '../../components/Widget/Widget';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 import styles from "./practice.module.scss"
 
@@ -15,6 +17,11 @@ const Practice = () => {
 
 
     const [exerciseList, setExerciseList] = useState([])
+    const [displayExercise, setDisplayExercise] = useState([])
+    const [page, setPage] = useState(0)
+    const [pageCount, setPageCount] = useState(1)
+    const [openPageList, setOpenPageList] = useState(false)
+
     useEffect(() => {
 
         if(exercises && user){
@@ -28,10 +35,27 @@ const Practice = () => {
         if(!user){
             setExerciseList(exercises.slice(0,4))
         }
-    },[exercises])
+    },[exercises, user])
 
+    useEffect(() => {
+        if(exerciseList){
+            setPageCount(Math.ceil(exerciseList.length/9))
+        }
+    },[exerciseList])
+
+    useEffect(() => {
+
+        if(exerciseList){
+            const list = exerciseList.slice(page*9, (page+1)*9)
+            setDisplayExercise([...list])
+        }
+    }, [page, exerciseList])
    
-   
+    if(!displayExercise){
+        return(
+            <Navbar />
+        )
+    }
 
     return (
         <div className={styles.container}>
@@ -39,13 +63,13 @@ const Practice = () => {
 
             <div className={styles.exerciseContainer}>
                 <div className={styles.intro}>
-                    <h2>Exercise list</h2>
-                    <span>This is a list of chart courses on this site. Choose your favorite course and study how to read charts!</span>
+                    <h2>Bài tập luyện tập</h2>
+                    <span>Hãy áp dụng lý thuyết đã học và ...</span>
                 </div>
 
                 <div className={styles.listContainer}>
                     {
-                        exerciseList.map((exercise) => 
+                        displayExercise.map((exercise) => 
                         <Link to = {`/practice/exercise/${exercise.order}`} state={{ order: exercise.order }}>
                             <div className={styles.listItem}>
                                 <img src = {exercise.imageURL}></img>
@@ -59,6 +83,44 @@ const Practice = () => {
                         
                         )
                     }
+                </div>
+
+                <div className={styles.pageControl}>
+                    <div className={styles.pageAction} onClick={() => {
+                        setPage(pre => pre - 1)
+                        setOpenPageList(false)
+                    }}>Trang trước</div>
+                    <div className={styles.currentPage} >
+                        <div>{page + 1}</div>
+                        
+                        {
+                        openPageList 
+                        && 
+                        <div className={styles.pageList}>
+                            {
+                            pageCount
+                            &&
+                            [...Array(4)].map( (pageNumber, i) => (
+                                <div className={ (i === page) ? styles.pageNumberSelected : styles.pageNumber} onClick={() => {
+                                    setPage(i)
+                                    setOpenPageList(false)
+                                }}>{i+1}</div>
+                            ))
+                            }
+                        </div>
+                        }
+                    </div>
+                    {
+                        !openPageList && <ArrowDropUpIcon className={styles.arrow} onClick={() => setOpenPageList(!openPageList)}/>
+                    }
+                    
+                    {
+                        openPageList && <ArrowDropDownIcon className={styles.arrow} onClick={() => setOpenPageList(!openPageList)}/>
+                    }
+                    <div className={styles.pageAction} onClick={() => {
+                        setPage(pre => pre + 1)
+                        setOpenPageList(false)
+                    }}>Trang sau</div>
                 </div>
             </div>
 

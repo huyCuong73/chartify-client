@@ -1,7 +1,18 @@
+@mixin sm {
+    @media only screen and (max-width: 600px) {
+        @content;
+    }
+}
+
 .container{
     width: 70vw;
     margin-top: 100px;
     margin-left: 15vw;
+
+    @include sm{
+        width: 90%;
+        margin-left: 5%;
+    }
 
     .tiny{
         width: 100%;

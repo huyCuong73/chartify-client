@@ -167,7 +167,9 @@ export default function Register() {
 				!newUser
 				?
 				<div className={style.container}>
-					<span className={style.logo}>LOGO</span>
+					<div className={style.logo}>
+						<img src="/final1.png" alt="" />
+					</div>
 			
 					<div className = {style.inputWrapper}>	
 						<input

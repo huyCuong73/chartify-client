@@ -18,6 +18,7 @@ import { socketRequest } from './redux/actions/socket';
 import { getExercisesRequest, getExercisesRequestNonUser } from './redux/actions/exercises';
 import { getCoursesRequest } from './redux/actions/courses';
 import { url } from './api/api';
+import Introduction from './pages/Introduction/Introduction';
 
 
 function App() {												
@@ -58,6 +59,7 @@ function App() {
 			<Route path="/posts" element={<Posts/>} />
 			<Route path="/posts/:id" element={<DisplayPost/>} />
 			<Route path="/profile/:id" element={<Profile/>} />
+			<Route path="/about-us" element={<Introduction/>} />
 		</Routes>
 	);
 }

@@ -5,12 +5,15 @@ import "./fireAnt.css"
 import styles from "./widget.module.scss"
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { getNewUsers } from '../../api/userAPI';
+import Avatar from '../Avatar/Avatar';
 
 const Widget = () => {
 
     const user = useSelector(state => state.user.user)
     const exercises = useSelector(state => state.exercises.exercises)
     const [practiceProgress, setPracticeProgress] = useState(0)
+    const [newUsers, setNewUsers] = useState([])
 
     const location = useLocation();
 	const { pathname } = location;
@@ -24,6 +27,11 @@ const Widget = () => {
             let percentage = user.progress.practice/exercises.length * 100
             setPracticeProgress(parseFloat (percentage.toFixed(1)))
         }
+    },[user, exercises])
+
+    useEffect(() => {
+        getNewUsers()
+            .then(res => setNewUsers(res.data))
     })
 
     useEffect(() => {
@@ -99,6 +107,34 @@ const Widget = () => {
                     <span>
                         Liên hệ Zalo
                     </span>
+                </div>
+            </div>
+
+            <div className={styles.greeting}>
+                <div className={styles.text}>
+                    Chào mừng các thành viên mới:
+                </div>
+                <div className={styles.newUsers}>
+                    {
+                        newUsers
+                        &&
+                        newUsers.map((newUser) => 
+                            <div className={styles.newUser}>
+                                <div className={styles.avatar}>
+                                    <Avatar user = {newUser}/>
+                                                                        
+                                </div>
+                                <div className={styles.newUserName}>
+                                    <span>{newUser.lastName}</span> <span>{newUser.firstName}</span>
+                                </div>
+                            </div>
+                        )
+                    }
+                    
+                </div>
+
+                <div className={styles.text}>
+                    đã tham gia vào cộng đồng Chartify
                 </div>
             </div>
 

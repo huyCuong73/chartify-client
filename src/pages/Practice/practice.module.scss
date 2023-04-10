@@ -1,3 +1,9 @@
+@mixin sm {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+}
+
 .container{
     width: 80vw;
     margin-left: 10vw;
@@ -8,6 +14,14 @@
 
     .exerciseContainer{
         width: 68%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+
+        @include sm{
+            width: 100%;
+        }
 
         .intro{
             width: 100%;
@@ -33,31 +47,46 @@
             width: 100%;
             height: fit-content;
             background-color: #fff;
-
             display: grid;
-            grid-template-columns: auto auto auto auto;
-            // align-content: space-between;
-            
+            grid-template-columns: auto auto auto;
+            align-content: space-between;
             row-gap: 2vw;
-            padding: 2vw 2vw;
+            padding: 2.5vw 2vw;
+            @include sm{
+                padding: 3vw 2vw;
+            }
+
             
             a{
                 text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
 
             .listItem{
-                width: 11vw;
-                height: 10vw;
+                width: 15vw;
+                height: 13vw;
                 background-color: rgb(221, 221, 221);
                 display: flex;
                 flex-direction: column;
-                margin: 0 0.8vw;
+                // margin: 0 0.8vw;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                @include sm{
+                    width: 22vw;
+                    height: 17vw;
+                }
 
                 img{
                     width: 100%;
-                    height: 7vw;
+                    height: 10vw;
                     object-fit: cover;
+
+                    @include sm{
+                        height: 13vw;
+                    }
                 }
 
                 .courseTitle{
@@ -71,7 +100,7 @@
                     font-size: 1vw;
                     
                     span{
-                        width: 10vw;
+                        width: 11vw;
                         height: 2.5vw;
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
@@ -84,9 +113,102 @@
                     }
                 }
             }
+
+        }
+        .pageControl{
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 30px;
+
+            .currentPage{
+                position: relative;
+                width: 40px;
+                height: 25px;
+                background-color: #ffffff;
+                border: 1px solid #e7e5e5;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+
+
+                .pageList{
+                    width: 38px;
+                    height: 75px;
+                    position: absolute;
+                    background-color: #ffffff;
+                    border: 1px solid rgb(153, 153, 153);
+                    left: 0;
+                    // transform: translateX(-50%);
+                    top:-78px;
+                    overflow-y: scroll;
+
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                        
+                    }
+                    &::-webkit-scrollbar-track {
+                        background: #d3d3d3;
+                        border-radius: 120px;
+                    }
+                    &::-webkit-scrollbar-thumb { 
+                        background: #1b08eb;
+                        width: 4px;
+                        height: 6px; 
+                        border-radius: 120px;
+                    }
+
+                    .pageNumber{
+                        display: flex;
+                        height: 25px;
+                        justify-content: center;
+                        border-bottom: 1px solid #bfbfbf;
+                        cursor: pointer;
+                    }
+
+                    .pageNumberSelected{
+                        background-color: #4b6bd2;
+                        color: white;
+                        display: flex;
+                        height: 25px;
+                        justify-content: center;
+                        border-bottom: 1px solid #bfbfbf;
+                        // cursor: pointer;
+                    }
+                }
+            }
+
+            .arrow{
+                width: 20px;
+                height: 25px;
+                background-color: #e7e5e5;
+            }
+
+
+            .pageAction{
+                padding: 0 10px;
+                width: 100px;
+                height: 25px;
+                background-color: #4841fd;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                border-radius: 5px;
+                margin: 10px;
+                cursor: pointer;
+            }
         }
     }
     .widgetWrapper{
         width: 30%;
+
+        @include sm{
+            display: none;
+        }
     }
 }

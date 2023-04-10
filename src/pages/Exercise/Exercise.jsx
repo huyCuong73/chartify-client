@@ -19,6 +19,7 @@ import * as updateUserActions  from "../../redux/actions/user"
 import DOMPurify from "dompurify";
 import CommentSection from "../../components/CommentSection/CommentSection";
 
+
 const Exercise = () => {
 
     const user =  useSelector( state => state.user.user)
@@ -39,17 +40,41 @@ const Exercise = () => {
 	const [imgLoaded, setImgLoaded] = useState()
 
 	const wrapperRef = useRef(null);
+	const initVideoRef = useRef(null)
 
+	const htmlInitVideo = exercise && `
+		<video src = ${exercise.initVideo} autoPlay muted playsinline ></video>
+	`
+	const pageRef = useRef(null)
+
+	useEffect(() => {
+		// console.log(window.screen.orientation);
+		if(pageRef.current){
+			pageRef.current.requestFullscreen()
+				.then(() => {
+					console.log("1");
+					window.screen.orientation.lock("landscape")
+				})
+		}
+	},[pageRef])
+	useEffect(() => {
+		if(initVideoRef.current){
+			initVideoRef.current.getElementsByTagName('video')[0].addEventListener("ended", (event) => {
+				setRunInitVideo(false)
+			});
+		}
+	})
 
 	useEffect(() => {
 		setExceedLimit(false)
-		if(exercises.length > 0){
-			setExercise(exercises[param.order-1])
+		if(exercises)
+			if(exercises.length > 0){
+				setExercise(exercises[param.order-1])
 
-			if(param.order > exercises.length){
-				setExceedLimit(true)
+				if(param.order > exercises.length){
+					setExceedLimit(true)
+				}
 			}
-		}
 
 
 	},[user,param.order,exercises])
@@ -178,7 +203,7 @@ const Exercise = () => {
 	}
 
  	return (
-    <div className={styles.container}>
+    <div className={styles.container} ref = {pageRef}>
         <Navbar/>
 
 		{
@@ -219,9 +244,7 @@ const Exercise = () => {
 								runInitVideo && exercise.initVideo !== "" 
 								&&
 								<div className={styles.initChart}>
-									<video src = {exercise.initVideo} autoPlay muted playsinline onEnded={() => {
-										setRunInitVideo(false)
-									}}></video>
+									<div ref = {initVideoRef} className={styles.tiny} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(htmlInitVideo)}}/>
 								</div>
 								
 							}
@@ -231,7 +254,7 @@ const Exercise = () => {
 							}}/>																																		
 							
 							{
-								!showed || <video src={exercise.videoURL[0]} autoPlay muted playsinline  onEnded={() => checkAnswer() }></video>
+								!showed || <video src={exercise.videoURL[0]} autoPlay muted="true" playsInline  onEnded={() => checkAnswer() }></video>
 							}
 							{
 								(startChecking && !correctAnswer) ? 
@@ -351,7 +374,7 @@ const Exercise = () => {
 					pickedAnswer !== 0 && startChecking?
 					<div className={styles.explaination}>
 						<span>Giải thích</span>
-						<div className={styles.tiny} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(exercise.explaination)}}/>
+						<div  className={styles.tiny} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(exercise.explaination)}}/>
 					</div>
 					: <></>
 				}

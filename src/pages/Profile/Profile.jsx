@@ -108,11 +108,11 @@ const Profile = () => {
 
       const reader = new FileReader(); 
         
-      if (file.size > 1048576) {
-        // 1 MB
-        window.alert("Please upload a file smaller than 1 MB");
-        return false;
-      }
+    //   if (file.size > 1048576) {
+    //     // 1 MB
+    //     window.alert("Please upload a file smaller than 1 MB");
+    //     return false;
+    //   }
       
       reader.readAsDataURL(file);
   
@@ -155,10 +155,12 @@ const Profile = () => {
                         isUploadingPicture 
                         &&
                         <div className={styles.uploading}>
+                            
+                            <img src="/loading.gif" alt="" />
                             <span>
                                 {loadingProgress} % 
-                                <img src="/loading.gif" alt="" />
                             </span>
+                           
                         </div>
                     }
                 </div>
